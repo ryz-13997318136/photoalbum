@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Photo_index</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.min.js"></script>
+
+</head>
+<body style="background-color: azure;">
+<div style="text-align: center;">在线相册</div>
+<div id="vm1" style=" width: 100%;height: 137px;margin-top: 10px;">
+    <div v-if="register" style="margin-top: 300px;text-align: center;">
+        用户注册
+        <el-row>
+            <el-col :span="8" :offset="8">
+                <el-form :model="registerUser" status-icon :rules="registerRule" ref="registerUser">
+                    <el-form-item label="姓名" prop="name">
+                        <el-input v-model="registerUser.name" auto-complete="off" clearable maxlength="10"></el-input>
+                    </el-form-item>
+                    <el-form-item label="手机号码" prop="mobile">
+                        <el-input v-model="registerUser.mobile" auto-complete="off" clearable maxlength="13"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="password">
+                        <el-input type="password" v-model="registerUser.password" auto-complete="off" clearable maxlength="10"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码" prop="password2">
+                        <el-input type="password" v-model="registerUser.password2" auto-complete="off" clearable maxlength="10"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="success" @click="registerOk()">注册</el-button>
+                        <el-button type="success" @click="register=false;index=true">返回</el-button>
+                        <el-button type="success" @click="registerRest()">重置</el-button>
+                    </el-form-item>
+                </el-form>
+
+            </el-col>
+        </el-row>
+    </div>
+
+    <div v-if="login" style="margin-top: 300px;text-align: center;">
+        用户登录
+        <el-row>
+            <el-col :span="8" :offset="8">
+
+                <el-form :model="loginUser">
+                    <el-form-item label="姓名" >
+                        <el-input v-model="loginUser.loginName" clearable maxlength="10"> </el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" >
+                        <el-input type="password" v-model="loginUser.loginPassword"  clearable maxlength="10"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="success" @click="loginOk()">登录</el-button>
+                        <el-button type="success" @click="login=false;index=true">返回</el-button>
+                        <el-button type="success" @click="loginRest()">重置</el-button>
+                    </el-form-item>
+                </el-form>
+
+            </el-col>
+        </el-row>
+
+    </div>
+    <div v-if="index" style="margin-top: 300px;text-align: center;">
+
+        <el-row>
+            <el-col :span="8" :offset="8">
+                <el-form>
+                    <el-form-item>
+                        <el-button type="success" @click="register = true;login = false;index=false">注册</el-button>
+                        <el-button type="success" @click="login=true;register = false;index=false">登录</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-col>
+        </el-row>
+
+
+    </div>
+
+
+</div>
+<script th:src="@{/js/index.js}"></script>
+</body>
+
+</html>
