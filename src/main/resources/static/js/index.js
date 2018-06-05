@@ -111,7 +111,6 @@ var vm = new Vue({
         },
         updated:function(){
             //this.registerRule.name[0].validator=this.validateName
-
         },
     })
 

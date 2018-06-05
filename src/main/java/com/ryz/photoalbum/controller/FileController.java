@@ -47,7 +47,6 @@ public class FileController {
             return "FAIL";
         }
 
-
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String location =df.format(new Date()) + System.getProperty("file.separator");
         // 判断文件夹是否存在，不存在则
@@ -56,7 +55,6 @@ public class FileController {
         if(!targetFile.exists()){
             targetFile.mkdirs();
         }
-
         String fileName = file.getOriginalFilename();
         fileName = fileName.length()>10?fileName.substring(fileName.length()-10):fileName;
         String url ="";
@@ -117,6 +115,5 @@ public class FileController {
     public void deleteImageById(@RequestParam String id){
         imageService.deleteImageById(id);
     }
-
 
 }

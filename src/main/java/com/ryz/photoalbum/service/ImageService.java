@@ -15,7 +15,6 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-
     public void save(PImage image){
         imageRepository.save(image);
     }
